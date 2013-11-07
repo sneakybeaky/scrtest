@@ -10,12 +10,20 @@ import java.util.logging.Logger;
 /**
  * Example OSGi service using SCR annotations.
  */
-@Component(immediate = true, metatype = true, configurationFactory= true, policy = ConfigurationPolicy.REQUIRE)
+@Component(
+        metatype = true,
+        configurationFactory= true,
+        policy = ConfigurationPolicy.REQUIRE,
+        label = "Goodbye World Config"
+)
+
 @Service(GoodbyeWorldService.class)
+
 @Properties({
     @Property(name = Constants.SERVICE_VENDOR, value = "Nine Demons"),
     @Property(name = Constants.SERVICE_DESCRIPTION, value = "Provides a friendly farewell.")
 })
+
 public class GoodbyeWorldService {
 
     private static final Logger LOG = Logger.getLogger(GoodbyeWorldService.class.getName());
