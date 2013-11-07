@@ -3,7 +3,7 @@ To run this demo, first build this project
     mvn clean install
 
 
-Now download the latest Karaf distribution, unpack & run. In the console do
+Now download the latest [Karaf](http://karaf.apache.org/) distribution, unpack & run. In the console do
 
     karaf@root> features:install webconsole-scr
     karaf@root> install -s mvn:com.ninedemons/com.ninedemons.scrtest/1.1-SNAPSHOT
