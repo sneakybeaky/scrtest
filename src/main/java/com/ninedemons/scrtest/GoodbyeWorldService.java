@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 @Component(immediate = true, metatype = true, configurationFactory= true, policy = ConfigurationPolicy.REQUIRE)
 @Service(GoodbyeWorldService.class)
 @Properties({
-    @Property(name = Constants.SERVICE_VENDOR, value = "CQ Blueprints"),
+    @Property(name = Constants.SERVICE_VENDOR, value = "Nine Demons"),
     @Property(name = Constants.SERVICE_DESCRIPTION, value = "Provides a friendly farewell.")
 })
 public class GoodbyeWorldService {

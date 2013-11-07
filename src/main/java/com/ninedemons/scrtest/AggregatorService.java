@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 @Component(immediate = true)
 @Service(AggregatorService.class)
 @Properties({
-        @Property(name = Constants.SERVICE_VENDOR, value = "CQ Blueprints"),
+        @Property(name = Constants.SERVICE_VENDOR, value = "Nine Demons"),
         @Property(name = Constants.SERVICE_DESCRIPTION, value = "Collects all the goodbye services in one place")
 })
 
