@@ -1,4 +1,4 @@
-package com.ninedemons.scrtest.common;
+package com.ninedemons.scrtest.multiple.common;
 
 
 public interface GoodbyeWorld {

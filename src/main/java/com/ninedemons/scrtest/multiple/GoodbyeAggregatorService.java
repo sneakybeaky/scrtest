@@ -1,9 +1,10 @@
-package com.ninedemons.scrtest;
+package com.ninedemons.scrtest.multiple;
 
-import com.ninedemons.scrtest.common.GoodbyeWorld;
+import com.ninedemons.scrtest.multiple.common.GoodbyeWorld;
 import org.apache.felix.scr.annotations.*;
 import org.osgi.framework.Constants;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
@@ -27,7 +28,7 @@ public class GoodbyeAggregatorService {
             bind = "bindGoodbye",
             unbind = "unbindGoodbye"
     )
-    public Set<GoodbyeWorld> goodbyes = new HashSet<GoodbyeWorld>();
+    public Set<GoodbyeWorld> goodbyes =  Collections.synchronizedSet(new HashSet<GoodbyeWorld>());
 
 
     public void bindGoodbye(GoodbyeWorld service) {

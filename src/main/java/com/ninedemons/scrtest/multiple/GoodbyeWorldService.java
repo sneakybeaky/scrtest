@@ -1,6 +1,6 @@
-package com.ninedemons.scrtest;
+package com.ninedemons.scrtest.multiple;
 
-import com.ninedemons.scrtest.common.GoodbyeWorld;
+import com.ninedemons.scrtest.multiple.common.GoodbyeWorld;
 import org.apache.felix.scr.annotations.*;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
