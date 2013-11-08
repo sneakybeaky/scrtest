@@ -1,5 +1,6 @@
 package com.ninedemons.scrtest;
 
+import com.ninedemons.scrtest.common.GoodbyeWorld;
 import org.apache.felix.scr.annotations.*;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
@@ -17,14 +18,14 @@ import java.util.logging.Logger;
         label = "Goodbye World Config"
 )
 
-@Service(GoodbyeWorldService.class)
+@Service(GoodbyeWorld.class)
 
 @Properties({
     @Property(name = Constants.SERVICE_VENDOR, value = "Nine Demons"),
     @Property(name = Constants.SERVICE_DESCRIPTION, value = "Provides a friendly farewell.")
 })
 
-public class GoodbyeWorldService {
+public class GoodbyeWorldService implements GoodbyeWorld {
 
     private static final Logger LOG = Logger.getLogger(GoodbyeWorldService.class.getName());
 
@@ -34,6 +35,7 @@ public class GoodbyeWorldService {
 	@Property(value="Goodbye ")
 	static final String CONSTANT_NAME = "goodbye.prefix";
 
+    @Override
     public String getMessage(String name) {
         return String.format("%s %s!", this.prefix, name);
     }
@@ -56,9 +58,11 @@ public class GoodbyeWorldService {
         this.prefix = (String) configuration.get(CONSTANT_NAME);
     }
 
-    protected String getPrefix() {
-        return prefix;
+
+    @Override
+    public String toString() {
+        return "GoodbyeWorldService{" +
+                "prefix='" + prefix + '\'' +
+                '}';
     }
-
-
 }

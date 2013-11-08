@@ -1,5 +1,6 @@
 package com.ninedemons.scrtest;
 
+import com.ninedemons.scrtest.common.GoodbyeWorld;
 import org.apache.felix.scr.annotations.*;
 import org.osgi.framework.Constants;
 
@@ -9,45 +10,41 @@ import java.util.logging.Logger;
 
 
 @Component(immediate = true)
-@Service(AggregatorService.class)
+@Service(GoodbyeAggregatorService.class)
 @Properties({
         @Property(name = Constants.SERVICE_VENDOR, value = "Nine Demons"),
         @Property(name = Constants.SERVICE_DESCRIPTION, value = "Collects all the goodbye services in one place")
 })
 
-public class AggregatorService {
+public class GoodbyeAggregatorService {
 
-    private static final Logger LOG = Logger.getLogger(AggregatorService.class.getName());
+    private static final Logger LOG = Logger.getLogger(GoodbyeAggregatorService.class.getName());
 
-    @Reference (name="goodbyes",
+    @Reference (
             cardinality = ReferenceCardinality.OPTIONAL_MULTIPLE,
-            referenceInterface = GoodbyeWorldService.class,
+            referenceInterface = GoodbyeWorld.class,
             policy = ReferencePolicy.DYNAMIC,
             bind = "bindGoodbye",
             unbind = "unbindGoodbye"
     )
-    public Set<GoodbyeWorldService> goodbyes = new HashSet<GoodbyeWorldService>();
+    public Set<GoodbyeWorld> goodbyes = new HashSet<GoodbyeWorld>();
 
 
-    public void bindGoodbye(GoodbyeWorldService service) {
-        LOG.info("Got new goodbye service with prefix " + service.getPrefix());
+    public void bindGoodbye(GoodbyeWorld service) {
+        LOG.info("Got new goodbye service " + service);
         goodbyes.add(service);
         sayGoodbye("Bob");
     }
 
-    public void unbindGoodbye(GoodbyeWorldService service) {
-        LOG.info("Removed goodbye service with prefix " + service.getPrefix());
+    public void unbindGoodbye(GoodbyeWorld service) {
+        LOG.info("Removed goodbye service " + service);
         goodbyes.remove(service);
         sayGoodbye("Bob");
     }
 
-    public void updatedGoodbye(GoodbyeWorldService service) {
-        LOG.info("Updated goodbye service with prefix " + service.getPrefix());
-        sayGoodbye("Bob");
-    }
 
     public void sayGoodbye(String who) {
-        for (GoodbyeWorldService goodbye : goodbyes) {
+        for (GoodbyeWorld goodbye : goodbyes) {
             LOG.info(goodbye.getMessage(who));
         }
     }
