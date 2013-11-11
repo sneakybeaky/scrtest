@@ -25,7 +25,7 @@ Look at the karaf log and you should see an entry like this
     Got a new simple service Simple Service One
     Simple service one doing something
 
-This shows the consumer getting an instance of {{SimpleService}} and invoking it. Now use the [SCR web console tab](http://127.0.0.1:8181/system/console/components)
+This shows the consumer getting an instance of `SimpleService` and invoking it. Now use the [SCR web console tab](http://127.0.0.1:8181/system/console/components)
 and stop the `com.ninedemons.scrtest.simple.provider.SimpleServiceOne` component (click on the stop button in the action column).
 
 You will see an entry like this
